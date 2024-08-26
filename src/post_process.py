@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-mask_image_path = "../asserts/result1.jpg"
-rgb_image_path = "../asserts/10.jpg"
+mask_image_path = "../test/combined_mask_with_boundaries_4.png"
+mask_result_path = "../test/result_4.png"
 
 
 def post_process_image(image_path):
@@ -31,7 +31,7 @@ def edge_repair(mask):
     edges = cv2.Canny(mask, 100, 200)
 
     # 膨胀边缘以使其明显
-    kernel = np.ones((9, 9), np.uint8)
+    kernel = np.ones((3, 3), np.uint8)
     # dilated_edges = cv2.dilate(edges, kernel)
     closed_mask = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel)
 
@@ -44,5 +44,6 @@ if __name__ == '__main__':
     result = post_process_image(mask_image_path)
     cv2.imshow("mask original", mask_original)
     cv2.imshow("result", result)
+    cv2.imwrite(mask_result_path, result)
     cv2.waitKey(0)
     cv2.destroyAllWindows()

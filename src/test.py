@@ -3,6 +3,25 @@ import numpy as np
 
 rgb_image_path = "../asserts/10.jpg"
 
+prompt = [
+    {
+        "SOURCE_IMAGE_PATH": f"/data/1.jpg",
+        "CLASSES": ["boat", "person", "oars", "trees", "birds", "swans", "cattails", "water", "hills", "clouds", "sun"]
+    },
+    {
+        "SOURCE_IMAGE_PATH": f"/data/2.png",
+        "CLASSES": ["trees", "animals", "plants"]
+    },
+    {
+        "SOURCE_IMAGE_PATH": f"/data/3.png",
+        "CLASSES": ["trees", "flowers", "plants", "river"]
+    },
+    {
+        "SOURCE_IMAGE_PATH": f"/data/4.png",
+        "CLASSES": ["trees", "animals", "birds", "plants"]
+    }
+]
+
 
 def edge_repair(mask):
     # 查找边缘
